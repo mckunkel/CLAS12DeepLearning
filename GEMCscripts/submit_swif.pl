@@ -11,7 +11,7 @@ use Data::Dumper;
 
 my $config = LoadFile('../config.yaml');
 
-my $nJobs   = $config->{NinitialJobs};      # total number of jobs
+my $nJobs   = $config->{NinitialJobs};     # total number of jobs
 my $NEvents = $config->{NeventsPerJob};    #
 
 #workflow settings
@@ -33,7 +33,7 @@ my $lundInput_dir = "$submit_dir/$config->{lundDirectory}";
 my $workFlowID    = $config->{projectName};
 
 my $command_source =
-  "source /group/clas12/gemc/environment.csh $config->{gemcConfig}"; 
+  "source /group/clas12/gemc/environment.csh $config->{gemcConfig}";
 my $command_exit = "exit 0";
 
 #Options to input into Gemc
@@ -50,59 +50,61 @@ my $input_1 =
 
 for $a ( @{ $config->{torusValue} } ) {
 	for $b ( @{ $config->{solenoidValue} } ) {
-		my $iJob = 0;
+		for my $fileName ( @{ $config->{fileName} } ) {
+			my $iJob = $config->{StartIndex};
 
-		my $torusSol_dir = "Torus" . $a . "Sol" . $b;
-		my $workflow = "-workflow " . $workFlowID . "_tor" . $a . "sol" . $b;
-		my $gemcOutput_dir =
-		  "$submit_dir/$config->{directories}->[0]/$torusSol_dir";
+			my $torusSol_dir = "Torus" . $a . "Sol" . $b . "/" . $fileName;
+			my $workflow =
+			  "-workflow " . $fileName . $workFlowID . "_tor" . $a . "sol" . $b;
+			my $gemcOutput_dir =
+			  "$submit_dir/$config->{directories}->[0]/$torusSol_dir";
 
-		#Options to input into Gemc
-		my $setTorusString = "value=\"clas12-torus-big, " . $a . "\"";
-		my $setTorus =
-		  "perl -p -i -e 's/$torusString/$setTorusString/g' clas12.gcard";
+			#Options to input into Gemc
+			my $setTorusString = "value=\"clas12-torus-big, " . $a . "\"";
+			my $setTorus =
+			  "perl -p -i -e 's/$torusString/$setTorusString/g' clas12.gcard";
 
-		my $setSolenoidtString = "value=\"clas12-solenoid, " . $b . "\"";
-		my $setSolenoid =
+			my $setSolenoidtString = "value=\"clas12-solenoid, " . $b . "\"";
+			my $setSolenoid =
 "perl -p -i -e 's/$solenoidString/$setSolenoidtString/g' clas12.gcard";
 
-		print "$torusSol_dir and $workflow \n";
+			print "$torusSol_dir and $workflow \n";
 
-		while ( $iJob < $nJobs ) {
+			while ( $iJob < $nJobs ) {
 
-			#now lets get the lund file as input
-			my $input_2 =
-"-input $config->{gcardLundPrefix}.lund $lundInput_dir/$config->{lundPrefix}_$iJob.lund";
+				#now lets get the lund file as input
+				my $input_2 =
+"-input $config->{gcardLundPrefix}.lund $lundInput_dir/$fileName/$fileName"
+				  . "_$iJob.lund";
 
-			#check to see in gemc file already exists
-			my $gemc_out =
-			    "$gemcOutput_dir/$config->{fileName}"
-			  . $a . "Sol"
-			  . $b . "_"
-			  . $iJob . ".ev";
-			my $mv_gemc = "-output out.ev $gemc_out";
+				#check to see in gemc file already exists
+				my $gemc_out =
+				  $gemcOutput_dir . "/" . $fileName . "_" . $iJob . ".ev";
+				my $mv_gemc = "-output out.ev $gemc_out";
 
-			if ( -e $gemc_out ) {
+				if ( -e $gemc_out ) {
 
 		 #print "YO dumbass, are you overwriting an existing file? Tsk Tsk! \n";
-				$iJob++;
-				next;
-			}
-			my $gemc_run = "gemc clas12.gcard";
+					$iJob++;
+					next;
+				}
+				my $gemc_run = "gemc clas12.gcard";
 
-			open my $command_file, ">command.dat"
-			  or die "cannot open command.dat file:$!";
-			print $command_file
+				open my $command_file, ">command.dat"
+				  or die "cannot open command.dat file:$!";
+				print $command_file
 "$command_source ; $setEvents;  $setTorus; $setSolenoid; $gemc_run; $command_exit";
 
-			close $command_file;
+				close $command_file;
 
-			my $sub =
+				my $sub =
 "swif add-job $workflow $project $track $time $OS $ram $disk $CPU_count $input_1 $input_2 -script command.dat $mv_gemc";
-			system($sub);
-			print "$sub \n\n";
 
-			$iJob++;
-		}    #end of job loop
+				system($sub);
+				print "$sub \n\n";
+
+				$iJob++;
+			}    #end of job loop
+		}    #end of fileName loop
 	}    #end of solenoid loop
 }    #end of torus loop

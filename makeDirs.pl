@@ -16,12 +16,20 @@ my $dataDir = "$config->{path}/$config->{projectName}";
 for my $d ( @{ $config->{directories} } ) {
 	for my $a ( @{ $config->{torusValue} } ) {
 		for my $b ( @{ $config->{solenoidValue} } ) {
+			for my $fileName ( @{ $config->{fileName} } ) {
 
-			my $torusSol_dir = "$dataDir/".$d."/Torus" . $a . "Sol" . $b;
+				my $torusSol_dir =
+				    "$dataDir/"
+				  . $d
+				  . "/Torus"
+				  . $a . "Sol"
+				  . $b . "/"
+				  . $fileName;
 
-			my $mkdir = "mkdir $torusSol_dir";
-			print "$mkdir \n";
-			system($mkdir);
+				my $mkdir = "mkdir $torusSol_dir";
+				print "$mkdir \n";
+				system($mkdir);
+			}
 		}
 	}
 }

@@ -12,10 +12,18 @@ my $config     = LoadFile('config.yaml');
 my $workFlowID = $config->{projectName};
 for $a ( @{ $config->{torusValue} } ) {
 	for $b ( @{ $config->{solenoidValue} } ) {
-		my $workflow       = $workFlowID . "_tor" . $a . "sol" . $b;
-		my $createWorkflow = "swif create $workflow";
-		print "$createWorkflow \n";
+		for my $fileName ( @{ $config->{fileName} } ) {
 
-		system($createWorkflow);
+			my $workflow =
+			  "-workflow " . $fileName . $workFlowID . "_tor" . $a . "sol" . $b;
+			my $createWorkflow = "swif create $workflow";
+			print "$createWorkflow \n";
+			my $runworkflow = "swif run " . $workflow;
+			print "$runworkflow \n";
+
+			system($createWorkflow);
+			system($runworkflow);
+
+		}
 	}
 }

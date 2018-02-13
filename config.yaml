@@ -4,21 +4,33 @@
 userName:
     mkunkel
 topDir: 
-    /work/clas12/mkunkel/EtaPrimeDilepton/CLASEtaPrimeAnalysis/EtaPrimeAnalysis
+    /work/clas12/mkunkel/CLAS12DeepLearning
 clas12Dir: 
-    /work/clas12/mkunkel/EtaPrimeDilepton/CLASEtaPrimeAnalysis/EtaPrimeAnalysis/Reconstructed
+    /work/clas12/mkunkel/CLAS12DeepLearning/Reconstructed
 torusValue:
 #    - -0.75
 #    - -1.0
     - 1.0 
+StartIndex:
+    1  
 NinitialJobs:
-    300  
+    6  
 NeventsPerJob:
-    10000     
+    10000             
 solenoidValue:
     - 0.8
 fileName:
-    FullDilepton_Tor   
+    - AntiNeutron
+    - AntiProton
+    - Electron
+    - Gamma
+    - KMinus
+    - KPlus
+    - Neutron
+    - PiMinus
+    - PiPlus
+    - Positron
+    - Proton   
 claraConfig:
     /work/clas12/mkunkel/myClara5a.0.7    
 gemcConfig:
@@ -28,12 +40,12 @@ gcardLundPrefix:
 path:
     /volatile/clas12/mkunkel
 projectName:
-     EtaPrimeDilepton       
+     DeepLearning       
 directories:
-    - GEMCFiles
-    - DecodedFiles
-    - ReconstructedFiles   
+    - PID/GEMCFiles
+    - PID/DecodedFiles
+    - PID/ReconstructedFiles   
 lundDirectory:
-    LundFiles  
+    PID/LundFiles  
 lundPrefix:
     AllDalitz       

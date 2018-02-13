@@ -13,10 +13,14 @@ my $config = LoadFile('config.yaml');
 my $workFlowID = $config->{projectName};
 for $a ( @{ $config->{torusValue} } ) {
 	for $b ( @{ $config->{solenoidValue} } ) {
-		my $workflow = $workFlowID . "_tor" . $a . "sol" . $b;
-		my $rmworkflow = "swif cancel $workflow -delete";
-		print "$rmworkflow \n";
+		for my $fileName ( @{ $config->{fileName} } ) {
 
-		system($rmworkflow);
-	}
-}
+			my $workflow =
+			  "-workflow " . $fileName . $workFlowID . "_tor" . $a . "sol" . $b;
+			my $rmworkflow = "swif cancel $workflow -delete";
+			print "$rmworkflow \n";
+
+			system($rmworkflow);
+		}    #end of fileName loop
+	}    #end of solenoid loop
+}    #end of torus loop
