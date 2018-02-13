@@ -1,0 +1,1 @@
+source /group/clas12/gemc/environment.csh 4a.2.1 ; perl -p -i -e 's/name="N"              value="350"/name="N"              value="10000"/g' clas12.gcard;  perl -p -i -e 's/value="clas12-torus-big, -1"/value="clas12-torus-big, 1.0"/g' clas12.gcard; perl -p -i -e 's/value="clas12-solenoid, 1"/value="clas12-solenoid, 0.8"/g' clas12.gcard; gemc clas12.gcard; exit 0

@@ -1,0 +1,39 @@
+#This is a config file for the simulation chain
+#Written by: Michael C. Kunkel / m.kunkel@fz-juelich.de
+---
+userName:
+    mkunkel
+topDir: 
+    /work/clas12/mkunkel/EtaPrimeDilepton/CLASEtaPrimeAnalysis/EtaPrimeAnalysis
+clas12Dir: 
+    /work/clas12/mkunkel/EtaPrimeDilepton/CLASEtaPrimeAnalysis/EtaPrimeAnalysis/Reconstructed
+torusValue:
+#    - -0.75
+#    - -1.0
+    - 1.0 
+NinitialJobs:
+    300  
+NeventsPerJob:
+    10000     
+solenoidValue:
+    - 0.8
+fileName:
+    FullDilepton_Tor   
+claraConfig:
+    /work/clas12/mkunkel/myClara5a.0.7    
+gemcConfig:
+    4a.2.2 
+gcardLundPrefix:
+    fullEtaPrimeDilepton     
+path:
+    /volatile/clas12/mkunkel
+projectName:
+     EtaPrimeDilepton       
+directories:
+    - GEMCFiles
+    - DecodedFiles
+    - ReconstructedFiles   
+lundDirectory:
+    LundFiles  
+lundPrefix:
+    AllDalitz       
