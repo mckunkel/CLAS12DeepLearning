@@ -29,33 +29,26 @@ for my $d ( @{ $config->{directories} } ) {
 				  . $fileName;
 
 				if ( !( -d $dataDir ) ) {
-					#print "$dataDir does not exist! \n";
 					push @commandList, "mkdir $dataDir";
 				}
 				if ( !( -d $dataDir . "/" . $d ) ) {
-					#print $dataDir . "/" . $d . " does not exist! \n";
 					my $tempDir = $dataDir . "/" . $d;
 					push @commandList, "mkdir $tempDir";
 				}
 				if ( !( -d $dataDir . "/" . $d . "/Torus" . $a . "Sol" . $b ) )
 				{
-					#print $dataDir . "/" . $d . "/Torus" . $a . "Sol" . $b
-					#  . " does not exist! \n";
 					my $tempDir =
 					  $dataDir . "/" . $d . "/Torus" . $a . "Sol" . $b;
 					push @commandList, "mkdir $tempDir";
 				}
 				if ( !( -d $torusSol_dir ) ) {
-					#print "$torusSol_dir does not exist! \n";
 					push @commandList, "mkdir $torusSol_dir";
-
 				}
 
-				#my $mkdir = "mkdir $torusSol_dir";
-				#print "$mkdir \n";
 				print "@commandList\n";
-
-				system(@commandList);
+				foreach (@commandList) {
+					system($_);
+				}
 			}
 		}
 	}
