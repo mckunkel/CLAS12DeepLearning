@@ -14,7 +14,7 @@ torusValue:
 StartIndex:
     1  
 NinitialJobs:
-    6  
+    100  
 NeventsPerJob:
     10000             
 solenoidValue:
@@ -22,7 +22,7 @@ solenoidValue:
 fileName:
     - AntiNeutron
     - AntiProton
-#    - Electron
+    - Electron
     - Gamma
     - KMinus
     - KPlus
