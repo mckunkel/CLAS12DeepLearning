@@ -1,1 +1,1 @@
-/work/clas12/mkunkel/myClara4a.8.3/plugins/clas12/bin/evio2hipo -r 11 -t -0.75 -s 0.8 -o FullDilepton_Tor-0.75Sol0.8_27.hipo FullDilepton_Tor-0.75Sol0.8_27.ev; exit 0
+/work/clas12/mkunkel/myClara5a.0.7/plugins/clas12/bin/evio2hipo -r 11 -t 1.0 -s 0.8 -o Proton_5.hipo Proton_5.ev; exit 0
