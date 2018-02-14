@@ -86,7 +86,7 @@ for $a ( @{ $config->{torusValue} } ) {
 				my $sub =
 "swif add-job $workflow $project $track $time $OS $ram $disk $CPU_count $input_1 -script command.dat $mv_decoded"
 				  ;                                #$input_0
-				                                   #system($sub);
+				system($sub);
 				print "$sub \n\n";
 
 				$iJob++;
