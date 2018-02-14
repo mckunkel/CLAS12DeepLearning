@@ -17,7 +17,7 @@ my $NEvents = $config->{NeventsPerJob};    #
 #workflow settings
 my $project   = "-project clas12";
 my $track     = "-track simulation";
-my $time      = "-time 9min";
+my $time      = "-time 20min";
 my $OS        = "-os centos7";
 my $shell     = "-shell /bin/tcsh";
 my $ram       = "-ram 6g";
