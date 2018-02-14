@@ -22,7 +22,7 @@ solenoidValue:
 fileName:
     - AntiNeutron
     - AntiProton
-    - Electron
+#    - Electron
     - Gamma
     - KMinus
     - KPlus

@@ -63,7 +63,7 @@ for my $a ( @{ $config->{torusValue} } ) {
 				if ( -e $file_out ) {
 					my $filesize = -s $file_out;
 					$filesize = ceil( $filesize / ( 1024 * 1024 ) );
-					if ( $filesize < 0.985 * $average ) {
+					if ( $filesize < 0.975 * $average ) {
 						print "$file_out is to be deleted  \n";
 						print
 						  "$filesize is fileSize and Average is  $average \n";

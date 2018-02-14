@@ -1,17 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.mkunkel.deeplearning</groupId>
-  <artifactId>clas12pid</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mkunkel.deeplearning</groupId>
+	<artifactId>clas12pid</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
 		<spark.version>2.2.1</spark.version>
 	</properties>
 	<dependencies>
-	<dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>15.0</version>
-      </dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.jlab.coat</groupId>
 			<artifactId>coat-libs</artifactId>
@@ -59,6 +60,11 @@
 			<artifactId>spark-mllib_2.11</artifactId>
 			<version>${spark.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.deeplearning4j</groupId>
+			<artifactId>deeplearning4j-core</artifactId>
+			<version>0.9.1</version>
 		</dependency>
 	</dependencies>
 	<build>
