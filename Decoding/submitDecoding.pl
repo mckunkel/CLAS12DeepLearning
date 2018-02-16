@@ -58,7 +58,7 @@ for $a ( @{ $config->{torusValue} } ) {
 				#check to see in gemc file already exists
 				my $gemc_in = $fileName . "_" . $iJob . ".ev";
 				my $input_1 = "-input $gemc_in $gemcInput_dir/$gemc_in";
-				if (!(-e $gemcInput_dir/$gemc_in)) {
+				if (!(-e $gemcInput_dir."/".$gemc_in)) {
 					print "This GEMC file does not exist \n";
 					$iJob++;
 					next;
