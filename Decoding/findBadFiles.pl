@@ -12,7 +12,7 @@ my $config = LoadFile('../config.yaml');
 
 my $nJobs      = $config->{NinitialJobs};                 # total number of jobs
 my $submit_dir = "$config->{path}/$config->{projectName}";
-my $fileName   = $config->{fileName};
+#my $fileName   = $config->{fileName};
 
 my $deletedFile = 0;
 
