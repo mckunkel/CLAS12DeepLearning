@@ -10,7 +10,7 @@ use YAML::XS 'LoadFile';
 use Data::Dumper;
 my $config = LoadFile('../config.yaml');
 
-my $nJobs      = 470;                                     # total number of jobs
+my $nJobs      = $config->{NinitialJobs};                 # total number of jobs
 my $submit_dir = "$config->{path}/$config->{projectName}";
 my $fileName   = $config->{fileName};
 
