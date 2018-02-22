@@ -43,7 +43,7 @@ for $a ( @{ $config->{torusValue} } ) {
 			  ;    #Location where the reconstructed hipo-file should be written
 
 			#lets get the clara list
-			my $claraList = "fileList" . $a . "Sol" . $b;
+			my $claraList = "fileList".$fileName . $a . "Sol" . $b;
 
 			open my $clara_file, ">$claraList.list"
 			  or die "cannot open $claraList.list file:$!";
