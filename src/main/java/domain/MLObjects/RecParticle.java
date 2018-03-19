@@ -189,9 +189,10 @@ public class RecParticle {
 	}
 
 	private static boolean checkNeutral(int particleID) {
-		if (PDGDatabase.getParticleById(particleID).charge() == 0) {
-			return true;
-		} else
-			return false;
+		return PDGDatabase.getParticleById(particleID).charge() == 0 ? true : false;
+		// if (PDGDatabase.getParticleById(particleID).charge() == 0) {
+		// return true;
+		// } else
+		// return false;
 	}
 }

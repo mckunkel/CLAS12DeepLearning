@@ -13,7 +13,6 @@
 package client;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -128,20 +127,21 @@ public class RunMLObject {
 
 		// String dirName =
 		// "/Volumes/Mac_Storage/Work_Data/CLAS12/EtaPrimeDilepton/";
-		String dirName = "/Volumes/DATA/CLAS12/MachineLearning/ReconstructedFiles/Electron/Torus-0.75Sol0.8/";
-		String partName = "out_Electron_Tor-0.75Sol0.8_";
+		String dirName = "/Volumes/MacStorage/WorkData/CLAS12/MachineLearning/HipoFiles/Torus1.0Sol0.8/Electron/";
+		String partName = "out_Electron_";
 
 		List<String> aList = new ArrayList<>();
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 1; i++) {
 			aList.add(dirName + partName + i + ".hipo");
 		}
 
 		String[] array = aList.toArray(new String[0]);
-		// RunMLObject runMLObject = new RunMLObject(array, "Electron", 11);
-		String[] newArgs = Arrays.copyOfRange(args, 2, args.length);
-		String outName = args[0];
-		int pid = Integer.parseInt(args[1]);
-		RunMLObject runMLObject = new RunMLObject(newArgs, outName, pid);
+		RunMLObject runMLObject = new RunMLObject(array, "Electron", 11);
+
+		// String[] newArgs = Arrays.copyOfRange(args, 2, args.length);
+		// String outName = args[0];
+		// int pid = Integer.parseInt(args[1]);
+		// RunMLObject runMLObject = new RunMLObject(newArgs, outName, pid);
 
 		runMLObject.run();
 		System.exit(0);
